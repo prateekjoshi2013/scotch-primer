@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/prateekjoshi2013/scotch"
+	"github.com/prateekjoshi2013/scotch-primer/handlers"
 )
 
 func initApplication() *application {
@@ -20,9 +21,19 @@ func initApplication() *application {
 	}
 
 	scotch.AppName = "myapp"
-	scotch.InfoLog.Println("Debug is set to ", scotch.Debug)
-	app := &application{
+
+	handlers := &handlers.Handlers{
 		App: scotch,
 	}
+
+	scotch.InfoLog.Println("Debug is set to ", scotch.Debug)
+
+	app := &application{
+		App:      scotch,
+		Handlers: handlers,
+	}
+
+	app.App.Routes = app.routes()
+
 	return app
 }
