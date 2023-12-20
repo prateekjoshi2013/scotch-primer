@@ -20,7 +20,7 @@ func initApplication() *application {
 	}
 
 	scotch.AppName = "myapp"
-	scotch.Debug = true
+	scotch.InfoLog.Println("Debug is set to ", scotch.Debug)
 	app := &application{
 		App: scotch,
 	}
