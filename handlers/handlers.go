@@ -16,3 +16,17 @@ func (h *Handlers) Home(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 }
+
+func (h *Handlers) GoPage(w http.ResponseWriter, r *http.Request) {
+	err := h.App.Render.GoPage(w, r, "home", nil, nil)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+}
+
+func (h *Handlers) JetPage(w http.ResponseWriter, r *http.Request) {
+	err := h.App.Render.JetPage(w, r, "jet-template", nil, nil)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+}
