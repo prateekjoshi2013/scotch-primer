@@ -1,3 +1,6 @@
 tmp
 vendor
 *workspace
+postgres
+redis
+mariadb
