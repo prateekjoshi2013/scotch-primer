@@ -5,10 +5,12 @@ import (
 
 	"github.com/CloudyKit/jet/v6"
 	"github.com/prateekjoshi2013/scotch"
+	"github.com/prateekjoshi2013/scotch-primer/data"
 )
 
 type Handlers struct {
-	App *scotch.Scotch
+	App    *scotch.Scotch
+	Models data.Models
 }
 
 func (h *Handlers) Home(w http.ResponseWriter, r *http.Request) {
