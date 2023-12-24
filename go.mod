@@ -6,6 +6,7 @@ replace github.com/prateekjoshi2013/scotch => ../scotch
 
 require (
 	github.com/CloudyKit/jet/v6 v6.2.0
+	github.com/DATA-DOG/go-sqlmock v1.5.1
 	github.com/go-chi/chi/v5 v5.0.11
 	github.com/prateekjoshi2013/scotch v0.0.0-00010101000000-000000000000
 	github.com/upper/db/v4 v4.7.0
