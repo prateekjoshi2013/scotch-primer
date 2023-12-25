@@ -84,9 +84,9 @@ func (u *User) Update(theUser *User) error {
 	return nil
 }
 
-func (u *User) Delete(theUser *User) error {
+func (u *User) Delete(id int) error {
 	collection := upper.Collection(u.Table())
-	res := collection.Find(theUser.ID)
+	res := collection.Find(id)
 	err := res.Delete()
 	if err != nil {
 		return err

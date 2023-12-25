@@ -4,3 +4,4 @@ vendor
 postgres
 redis
 mariadb
+*.out

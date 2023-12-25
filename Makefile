@@ -37,3 +37,30 @@ start_compose:
 
 stop_compose:
 	docker compose down
+
+## test: run all tests
+test:
+	@go test -v ./...
+
+## cover: opens coverage in browser
+cover:
+	@go test -coverprofile=coverage.out ./... && go tool cover -html=coverage.out
+
+
+## coverage: displays test coverage
+coverage:
+	@go test -cover ./...
+	
+
+## test: run all tests
+test_integ:
+	@go test -cover ./... --tags integration --count=1
+
+## cover: opens coverage in browser
+cover_integ:
+	@go test -coverprofile=coverage.out ./... --tags integration && go tool cover -html=coverage.out
+
+
+## coverage: displays test coverage
+coverage_integ:
+	@go test -cover ./... --tags integration
