@@ -7,6 +7,7 @@ import (
 	"github.com/prateekjoshi2013/scotch"
 	"github.com/prateekjoshi2013/scotch-primer/data"
 	"github.com/prateekjoshi2013/scotch-primer/handlers"
+	"github.com/prateekjoshi2013/scotch-primer/middlewares"
 )
 
 func initApplication() *application {
@@ -23,6 +24,8 @@ func initApplication() *application {
 
 	scotch.AppName = "myapp"
 
+	middleware := &middlewares.Middleware{App: scotch}
+
 	handlers := &handlers.Handlers{
 		App: scotch,
 	}
@@ -30,8 +33,9 @@ func initApplication() *application {
 	scotch.InfoLog.Println("Debug is set to ", scotch.Debug)
 
 	app := &application{
-		App:      scotch,
-		Handlers: handlers,
+		App:        scotch,
+		Handlers:   handlers,
+		Middleware: middleware,
 	}
 
 	app.App.Routes = app.routes()
@@ -39,5 +43,7 @@ func initApplication() *application {
 	app.Models = data.New(app.App.DB.Pool)
 
 	handlers.Models = app.Models
+	app.Middleware.Models = app.Models
+
 	return app
 }
