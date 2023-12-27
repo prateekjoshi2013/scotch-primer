@@ -4,6 +4,8 @@ import (
 	"errors"
 	"time"
 
+	"github.com/prateekjoshi2013/scotch"
+
 	up "github.com/upper/db/v4"
 	"golang.org/x/crypto/bcrypt"
 )
@@ -22,6 +24,13 @@ type User struct {
 
 func (u *User) Table() string {
 	return "users"
+}
+
+func (u *User) Validate(validator *scotch.Validation) {
+	validator.Check(u.LastName != "", "last_name", "Last Name cannot be empty")
+	validator.Check(u.FirstName != "", "first_name", "Last Name cannot be empty")
+	validator.Check(u.Email != "", "email", "Email cannot be empty")
+	validator.IsEmail("email", u.Email)
 }
 
 func (u *User) GetAll() ([]*User, error) {
